@@ -208,7 +208,7 @@ label[for="nav-toggle"] {
   position: relative;
   width: 16px;
   height: 3px;
-  background: var(--default-text-color); 
+  background: var(--background-color); 
   border-radius: 99px;
   transition: background 0.2s;
 }
@@ -221,10 +221,11 @@ label[for="nav-toggle"] {
   top: -6px;
   width: 10px;
   height: 3px;
-  background: var(--background-color);
+  background: var(--loader-color);
   border-radius: 99px;
   transform: translate(2px, 8px) rotate(30deg);
   transition: 0.2s;
+
 }
 
 #nav-toggle-burger:after {
