@@ -1,5 +1,4 @@
 
-
 main {
     margin-left: var(--navbar-width-min);
     transition: margin-left 0.2s;
@@ -15,7 +14,7 @@ main {
   .intro-greeting {
     height: auto;
     min-height: 500px;
-    background: #141414;
+    background: #f5f5f5;
     position: relative;
     padding: 20px 0;
   }
@@ -31,7 +30,7 @@ main {
   }
   
   .carousel-caption {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #00000080;
     padding: 20px;
     border-radius: 8px;
   }
@@ -47,7 +46,7 @@ main {
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px #0000001a;
     transition: transform 0.3s ease;
     height: 100%;
   }
@@ -108,7 +107,7 @@ main {
   
   .body-projects img {
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px #0000004d;
   }
   
   /* Contact Section */
