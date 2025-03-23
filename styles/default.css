@@ -300,11 +300,9 @@ label[for="nav-toggle"] {
   text-align: center;
 }
 
-
 /* Main Content */
 main {
     margin-left: 50px; /* add space */
     font-family: "Afacad Flux", serif;
     color: var(--default-text-color);
 }
-

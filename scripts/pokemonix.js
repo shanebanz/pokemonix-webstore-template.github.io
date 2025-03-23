@@ -108,9 +108,14 @@ function navigateTo(url) {
     });
   }
 
-  // Category Slider Functionality
+// Category Slider Functionality
 document.addEventListener('DOMContentLoaded', function() {
   const categoryButtons = document.querySelectorAll('.category-btn');
+  const categoryContents = document.querySelectorAll('.category-content');
+  
+  // Initialize the Add to Cart functionality for all products
+  initializeAddToCartButtons();
+  
   
   categoryButtons.forEach(button => {
     button.addEventListener('click', function() {
@@ -120,13 +125,67 @@ document.addEventListener('DOMContentLoaded', function() {
       // Add active class to clicked button
       this.classList.add('active');
       
-      // Here you would normally fetch or filter products based on category
-      // For now, we're just showing the UI change
-      const category = this.textContent.trim();
-      console.log(`Selected category: ${category}`);
+      // Get the category to show
+      const categoryToShow = this.getAttribute('data-category');
       
-      // You could add AJAX call here to load different products
-      // or filter the existing products on the page
+      // Hide all category contents
+      categoryContents.forEach(content => {
+        content.classList.remove('active');
+      });
+      
+      // Show the selected category content
+      document.getElementById(categoryToShow).classList.add('active');
+      
+      // Log the selection
+      console.log(`Selected category: ${categoryToShow}`);
+      
+      // Reinitialize add to cart buttons for newly visible items
+      initializeAddToCartButtons();
     });
   });
+  
+  // Initially show the featured category
+  document.getElementById('featured').classList.add('active');
 });
+
+// Function to initialize Add to Cart buttons for all products
+function initializeAddToCartButtons() {
+  const addToCartButtons = document.querySelectorAll('.featured-item button');
+  
+  addToCartButtons.forEach(button => {
+    // Remove any existing event listeners to prevent duplicates
+    const newButton = button.cloneNode(true);
+    button.parentNode.replaceChild(newButton, button);
+    
+    newButton.addEventListener('click', (e) => {
+      // Get product details
+      const itemContainer = e.target.closest('.featured-item');
+      const itemTitle = itemContainer.querySelector('.featured-item-title').textContent;
+      const itemPrice = itemContainer.querySelector('.featured-item-price').textContent;
+      
+      // You could add actual cart functionality here
+      console.log(`Added to cart: ${itemTitle} - ${itemPrice}`);
+      
+      // Change button text temporarily to show feedback
+      const originalText = newButton.textContent;
+      newButton.textContent = 'Added to Cart!';
+      newButton.classList.add('btn-success');
+      newButton.classList.remove('btn-outline-dark');
+      newButton.classList.remove('btn-danger'); // For daily bundle button
+      
+      // Reset button after 2 seconds
+      setTimeout(() => {
+        newButton.textContent = originalText;
+        newButton.classList.remove('btn-success');
+        
+        // Check if it's a daily bundle button (which uses btn-danger)
+        if (itemContainer.classList.contains('daily-bundle')) {
+          newButton.classList.add('btn-danger');
+        } else {
+          newButton.classList.add('btn-outline-dark');
+        }
+      }, 2000);
+    });
+  });
+}
+
