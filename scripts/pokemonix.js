@@ -107,3 +107,26 @@ function navigateTo(url) {
       }
     });
   }
+
+  // Category Slider Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Remove active class from all buttons
+      categoryButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Add active class to clicked button
+      this.classList.add('active');
+      
+      // Here you would normally fetch or filter products based on category
+      // For now, we're just showing the UI change
+      const category = this.textContent.trim();
+      console.log(`Selected category: ${category}`);
+      
+      // You could add AJAX call here to load different products
+      // or filter the existing products on the page
+    });
+  });
+});
